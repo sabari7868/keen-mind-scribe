@@ -42,7 +42,7 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: Phone, label: "Phone", value: "+91 98765 43210", subtext: "24/7 Confidential Hotline" },
-    { icon: Mail, label: "Email", value: "inquiries@shadowdetective.in", subtext: "Encrypted Communication" },
+    { icon: Mail, label: "Email", value: "inquiries@truedetective.in", subtext: "Encrypted Communication" },
     { icon: MapPin, label: "Office", value: "Mumbai, Maharashtra", subtext: "By Appointment Only" },
   ];
 
