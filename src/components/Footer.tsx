@@ -21,7 +21,7 @@ const Footer = () => {
                 <Eye className="w-6 h-6 text-navy-deep" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold">Shadow Detective</h3>
+                <h3 className="font-display text-xl font-bold">TrueDetective</h3>
                 <p className="text-sm text-muted-foreground">Private Investigation Agency</p>
               </div>
             </motion.div>
@@ -60,11 +60,11 @@ const Footer = () => {
                 +91 98765 43210
               </a>
               <a
-                href="mailto:inquiries@shadowdetective.in"
+                href="mailto:inquiries@truedetective.in"
                 className="flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors duration-300"
               >
                 <Mail className="w-4 h-4" />
-                inquiries@shadowdetective.in
+                inquiries@truedetective.in
               </a>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Shadow Detective Agency. All rights reserved.
+            © {new Date().getFullYear()} TrueDetective Agency. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-gold transition-colors duration-300">
