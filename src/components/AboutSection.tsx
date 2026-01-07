@@ -26,7 +26,7 @@ const AboutSection = () => {
     {
       icon: Award,
       title: "Proven Track Record",
-      description: "Over two decades of successful investigations with thousands of satisfied clients.",
+      description: "Seven years of successful investigations with thousands of satisfied clients.",
     },
   ];
 
@@ -49,7 +49,7 @@ const AboutSection = () => {
               transition={{ delay: 0.2 }}
               className="text-gold uppercase tracking-[0.3em] text-sm font-medium"
             >
-              About Our Agency
+              Trusted Investigators Since 2018
             </motion.span>
             
             <motion.h2
@@ -58,7 +58,7 @@ const AboutSection = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="font-display text-4xl md:text-5xl font-bold mt-4 mb-6"
             >
-              Trusted <span className="gold-text">Investigators</span> Since 1999
+              Truth. <span className="gold-text">Evidence.</span> Confidence.
             </motion.h2>
             
             <motion.p
@@ -67,10 +67,9 @@ const AboutSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-muted-foreground mb-8 leading-relaxed"
             >
-              For over two decades, our agency has been at the forefront of private investigation services. 
-              We combine traditional investigative techniques with cutting-edge technology to deliver 
-              results that exceed expectations. Our team of seasoned professionals brings expertise 
-              from law enforcement, military intelligence, and corporate security backgrounds.
+              For the past seven years, our agency has stood as a trusted leader in private investigation services. 
+              With a proven track record of success, we blend time-tested investigative methods with modern 
+              technology to deliver results that consistently exceed expectations.
             </motion.p>
 
             <motion.p
@@ -79,9 +78,10 @@ const AboutSection = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-muted-foreground leading-relaxed"
             >
-              Every case we undertake is handled with the utmost professionalism and discretion. 
-              We understand that seeking investigative services often comes during challenging times, 
-              and we are committed to providing not just answers, but peace of mind.
+              Each investigation is conducted with the highest standards of professionalism, confidentiality, 
+              and integrity. We understand that clients turn to us during some of the most challenging moments 
+              of their lives, and we are committed to providing not only clear answers but also the reassurance 
+              and peace of mind they deserve.
             </motion.p>
           </motion.div>
 
