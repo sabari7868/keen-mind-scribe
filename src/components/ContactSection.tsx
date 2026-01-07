@@ -58,17 +58,23 @@ const ContactSection = () => {
   //     setIsSubmitting(false);
   //   }
   // };
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   setIsSubmitting(true);
 
   try {
+    const payload = {
+      ...formData,
+      timestamp: new Date().toISOString(),
+    };
+
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      body: JSON.stringify({
-        ...formData,
-        timestamp: new Date().toISOString(),
-      }),
+      mode: "cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(payload),
     });
 
     toast({
@@ -95,6 +101,7 @@ const ContactSection = () => {
     setIsSubmitting(false);
   }
 };
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
