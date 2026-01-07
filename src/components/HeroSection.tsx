@@ -100,7 +100,7 @@ const HeroSection = () => {
         >
           <span className="text-foreground">Truth.</span>{" "}
           <span className="gold-text">Evidence.</span>{" "}
-          <span className="text-foreground">Justice.</span>
+          <span className="text-foreground">Confidence.</span>
         </motion.h1>
 
         <motion.p
