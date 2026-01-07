@@ -126,28 +126,27 @@ const HeroSection = () => {
           </Button>
         </motion.div>
 
-        {/* Stats Bar */}
+        {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-16 flex flex-wrap justify-center gap-6 md:gap-10"
         >
           {[
-            { value: "25+", label: "Years Experience" },
-            { value: "5000+", label: "Cases Solved" },
-            { value: "100%", label: "Confidential" },
-            { value: "24/7", label: "Available" },
-          ].map((stat, index) => (
+            { icon: Shield, text: "Licensed & Certified" },
+            { icon: Lock, text: "100% Confidential" },
+            { icon: Eye, text: "Discreet Operations" },
+          ].map((badge, index) => (
             <motion.div
-              key={stat.label}
+              key={badge.text}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-              className="glass-card p-6 rounded-xl"
+              className="flex items-center gap-3 px-5 py-3 rounded-full border border-gold/30 bg-background/50 backdrop-blur-sm"
             >
-              <div className="text-3xl md:text-4xl font-bold gold-text mb-2">{stat.value}</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+              <badge.icon className="w-5 h-5 text-gold" />
+              <span className="text-sm font-medium text-foreground/90 uppercase tracking-wider">{badge.text}</span>
             </motion.div>
           ))}
         </motion.div>
