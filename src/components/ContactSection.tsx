@@ -70,7 +70,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      mode: "cors",
+      // mode: "cors",
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
