@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Shield, Lock, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL"; // Replace with your Google Apps Script URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFPHcHk9JVyoJXZ6k_hPWLSCwumk3LprKAzBtzS_UdgXPppWTUuEoS7F_J06VZ7Ldz/exec";
 
 const ContactSection = () => {
   const ref = useRef(null);

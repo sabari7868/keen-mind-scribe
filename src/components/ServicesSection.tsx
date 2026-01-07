@@ -7,9 +7,16 @@ import {
   FileSearch, 
   Gavel,
   ArrowRight,
-  X
+  X,
+  ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface ServiceDetail {
   title: string;
@@ -192,15 +199,6 @@ const ServicesSection = () => {
                     {service.description}
                   </p>
 
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold mr-3" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
 
                   {/* CTA */}
                   <motion.button
@@ -271,24 +269,26 @@ const ServicesSection = () => {
                   {selectedService.fullDescription}
                 </p>
 
-                <div className="space-y-6">
+                <Accordion type="single" collapsible className="space-y-3">
                   {selectedService.details.map((detail, index) => (
-                    <motion.div
-                      key={detail.title}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * index }}
-                      className="glass-card p-6 rounded-xl"
+                    <AccordionItem 
+                      key={detail.title} 
+                      value={`item-${index}`}
+                      className="glass-card rounded-xl border-none overflow-hidden"
                     >
-                      <h4 className="font-display text-lg font-semibold mb-2 text-gold">
-                        {detail.title}
-                      </h4>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {detail.description}
-                      </p>
-                    </motion.div>
+                      <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-gold/5 transition-colors [&[data-state=open]>svg]:rotate-180">
+                        <span className="font-display text-lg font-semibold text-gold text-left">
+                          {detail.title}
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-6 pb-4 pt-0">
+                        <p className="text-muted-foreground leading-relaxed">
+                          {detail.description}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </div>
+                </Accordion>
 
                 <div className="mt-8 flex justify-center">
                   <Button
