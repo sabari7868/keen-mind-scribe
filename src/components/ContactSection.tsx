@@ -23,41 +23,79 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
     
-    try {
-      // Submit to Google Sheets via Apps Script
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        // mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-        }),
-      });
+  //   try {
+  //     // Submit to Google Sheets via Apps Script
+  //     const response = await fetch(GOOGLE_SCRIPT_URL, {
+  //       method: "POST",
+  //       // mode: "no-cors",
+  //       // headers: {
+  //       //   "Content-Type": "application/json",
+  //       // },
+  //       body: JSON.stringify({
+  //         ...formData,
+  //         timestamp: new Date().toISOString(),
+  //       }),
+  //     });
 
-      // Since no-cors mode doesn't allow reading response, we assume success
-      toast({
-        title: "Inquiry Submitted Successfully",
-        description: "Our team will contact you within 24 hours. All communications are strictly confidential.",
-      });
+  //     // Since no-cors mode doesn't allow reading response, we assume success
+  //     toast({
+  //       title: "Inquiry Submitted Successfully",
+  //       description: "Our team will contact you within 24 hours. All communications are strictly confidential.",
+  //     });
       
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Submission Error",
-        description: "There was an issue submitting your inquiry. Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //     setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+  //   } catch (error) {
+  //     toast({
+  //       title: "Submission Error",
+  //       description: "There was an issue submitting your inquiry. Please try again or contact us directly.",
+  //       variant: "destructive",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        ...formData,
+        timestamp: new Date().toISOString(),
+      }),
+    });
+
+    toast({
+      title: "Inquiry Submitted Successfully",
+      description:
+        "Our team will contact you within 24 hours. All communications are strictly confidential.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+  } catch (error) {
+    toast({
+      title: "Submission Error",
+      description:
+        "There was an issue submitting your inquiry. Please try again or contact us directly.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
