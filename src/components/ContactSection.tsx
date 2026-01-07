@@ -4,8 +4,10 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Shield, Lock } from "lucide-react";
+import { Phone, Mail, MapPin, Shield, Lock, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL"; // Replace with your Google Apps Script URL
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -16,6 +18,7 @@ const ContactSection = () => {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,19 +27,39 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "Inquiry Submitted",
-      description: "Our team will contact you within 24 hours. All communications are strictly confidential.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      // Submit to Google Sheets via Apps Script
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      // Since no-cors mode doesn't allow reading response, we assume success
+      toast({
+        title: "Inquiry Submitted Successfully",
+        description: "Our team will contact you within 24 hours. All communications are strictly confidential.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your inquiry. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -44,6 +67,14 @@ const ContactSection = () => {
     { icon: Phone, label: "Phone", value: "+91 98765 43210", subtext: "24/7 Confidential Hotline" },
     { icon: Mail, label: "Email", value: "inquiries@truedetective.in", subtext: "Encrypted Communication" },
     { icon: MapPin, label: "Office", value: "Mumbai, Maharashtra", subtext: "By Appointment Only" },
+  ];
+
+  const serviceOptions = [
+    "Personal Investigation",
+    "Corporate Investigation",
+    "Background Verification",
+    "Litigation & Specialized Investigations",
+    "Other",
   ];
 
   return (
@@ -131,7 +162,7 @@ const ContactSection = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">Full Name</label>
+                  <label htmlFor="name" className="text-sm font-medium">Full Name *</label>
                   <Input
                     id="name"
                     name="name"
@@ -143,7 +174,7 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium">Phone Number</label>
+                  <label htmlFor="phone" className="text-sm font-medium">Phone Number *</label>
                   <Input
                     id="phone"
                     name="phone"
@@ -156,18 +187,36 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">Email Address</label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  required
-                  className="bg-input/50 border-border/50 focus:border-gold/50 transition-colors"
-                />
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">Email Address *</label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    required
+                    className="bg-input/50 border-border/50 focus:border-gold/50 transition-colors"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="service" className="text-sm font-medium">Service Required *</label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="w-full h-10 px-3 rounded-md bg-input/50 border border-border/50 focus:border-gold/50 transition-colors text-foreground"
+                  >
+                    <option value="" disabled>Select a service</option>
+                    {serviceOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -190,7 +239,14 @@ const ContactSection = () => {
                 className="w-full"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Request Confidential Consultation"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Request Confidential Consultation"
+                )}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
