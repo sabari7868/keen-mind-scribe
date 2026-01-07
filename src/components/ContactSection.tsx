@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Shield, Lock, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyx6XxJy9c-DFh6FzHwHWrY723R7C7hDJDNybbjQFCrAPjB0JRgVtHWgK9DvxTWxHHD/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkr7Wy4redffe94Ro63foACzVP6oM4V0GMiyn90TPWo2OwXjOyZ7oJTfFsKnslc2Cp/exec";
 
 const ContactSection = () => {
   const ref = useRef(null);
