@@ -147,32 +147,32 @@ const ServicesSection = () => {
 
   return (
     <>
-      <section id="services" className="py-24 relative overflow-hidden" ref={ref}>
+      <section id="services" className="py-16 sm:py-24 relative overflow-hidden" ref={ref}>
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-background to-navy-deep/50" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <span className="text-gold uppercase tracking-[0.3em] text-sm font-medium">
+            <span className="text-gold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm font-medium">
               Our Services
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:mt-4 mb-4 sm:mb-6">
               Comprehensive <span className="gold-text">Investigation</span> Services
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
               From personal matters to corporate security, we offer a full range of professional 
               investigation services tailored to your specific needs.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -182,20 +182,20 @@ const ServicesSection = () => {
                 whileHover={{ y: -10 }}
                 className="group relative"
               >
-                <div className="glass-card p-8 rounded-2xl h-full transition-all duration-500 group-hover:border-gold/30 group-hover:shadow-xl group-hover:shadow-gold/10">
+                <div className="glass-card p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl h-full transition-all duration-500 group-hover:border-gold/30 group-hover:shadow-xl group-hover:shadow-gold/10">
                   {/* Icon */}
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gold/20 to-electric-blue/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-8 h-8 text-gold" />
+                  <div className="relative mb-4 sm:mb-6">
+                    <div className="w-12 h-12 sm:w-14 md:w-16 sm:h-14 md:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br from-gold/20 to-electric-blue/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-6 h-6 sm:w-7 md:w-8 sm:h-7 md:h-8 text-gold" />
                     </div>
                     <div className="absolute -inset-2 bg-gold/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-gold transition-colors duration-300">
+                  <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 sm:mb-3 group-hover:text-gold transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-3">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3">
                     {service.description}
                   </p>
 
@@ -204,9 +204,9 @@ const ServicesSection = () => {
                   <motion.button
                     whileHover={{ x: 5 }}
                     onClick={() => setSelectedService(service)}
-                    className="flex items-center text-gold text-sm font-medium cursor-pointer hover:underline"
+                    className="flex items-center text-gold text-xs sm:text-sm font-medium cursor-pointer hover:underline"
                   >
-                    Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                    Learn More <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -222,7 +222,7 @@ const ServicesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm"
             onClick={() => setSelectedService(null)}
           >
             <motion.div
@@ -230,33 +230,33 @@ const ServicesSection = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-background border border-border/50 rounded-2xl shadow-2xl"
+              className="relative w-full max-w-4xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto bg-background border border-border/50 rounded-xl sm:rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-4 right-4 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 bg-background/80 backdrop-blur-sm hover:bg-background h-8 w-8 sm:h-10 sm:w-10"
                 onClick={() => setSelectedService(null)}
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
 
               {/* Image Header */}
-              <div className="relative h-64 overflow-hidden rounded-t-2xl">
+              <div className="relative h-40 sm:h-56 md:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
                 <img
                   src={selectedService.image}
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                <div className="absolute bottom-6 left-8 right-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center backdrop-blur-sm">
-                      <selectedService.icon className="w-7 h-7 text-gold" />
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-8 right-4 sm:right-8">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 md:w-14 sm:h-12 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center backdrop-blur-sm">
+                      <selectedService.icon className="w-5 h-5 sm:w-6 md:w-7 sm:h-6 md:h-7 text-gold" />
                     </div>
-                    <h2 className="font-display text-3xl font-bold text-white">
+                    <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white">
                       {selectedService.title}
                     </h2>
                   </div>
@@ -264,25 +264,25 @@ const ServicesSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              <div className="p-4 sm:p-6 md:p-8">
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
                   {selectedService.fullDescription}
                 </p>
 
-                <Accordion type="single" collapsible className="space-y-3">
+                <Accordion type="single" collapsible className="space-y-2 sm:space-y-3">
                   {selectedService.details.map((detail, index) => (
                     <AccordionItem 
                       key={detail.title} 
                       value={`item-${index}`}
-                      className="glass-card rounded-xl border-none overflow-hidden"
+                      className="glass-card rounded-lg sm:rounded-xl border-none overflow-hidden"
                     >
-                      <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-gold/5 transition-colors [&[data-state=open]>svg]:rotate-180">
-                        <span className="font-display text-lg font-semibold text-gold text-left">
+                      <AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 hover:no-underline hover:bg-gold/5 transition-colors [&[data-state=open]>svg]:rotate-180">
+                        <span className="font-display text-sm sm:text-base md:text-lg font-semibold text-gold text-left">
                           {detail.title}
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent className="px-6 pb-4 pt-0">
-                        <p className="text-muted-foreground leading-relaxed">
+                      <AccordionContent className="px-4 sm:px-6 pb-3 sm:pb-4 pt-0">
+                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                           {detail.description}
                         </p>
                       </AccordionContent>
@@ -290,7 +290,7 @@ const ServicesSection = () => {
                   ))}
                 </Accordion>
 
-                <div className="mt-8 flex justify-center">
+                <div className="mt-6 sm:mt-8 flex justify-center">
                   <Button
                     variant="gold"
                     size="lg"
@@ -298,6 +298,7 @@ const ServicesSection = () => {
                       setSelectedService(null);
                       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                     }}
+                    className="text-sm sm:text-base px-6 sm:px-8"
                   >
                     Request Consultation
                   </Button>

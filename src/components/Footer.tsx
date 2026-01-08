@@ -3,12 +3,12 @@ import { Eye, Lock, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative py-16 overflow-hidden">
+    <footer className="relative py-12 sm:py-16 overflow-hidden">
       <div className="absolute inset-0 bg-navy-deep" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <motion.div
