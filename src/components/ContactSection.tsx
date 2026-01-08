@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Shield, Lock, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkr7Wy4redffe94Ro63foACzVP6oM4V0GMiyn90TPWo2OwXjOyZ7oJTfFsKnslc2Cp/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFPHcHk9JVyoJXZ6k_hPWLSCwumk3LprKAzBtzS_UdgXPppWTUuEoS7F_J06VZ7Ldz/exec";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -123,30 +123,30 @@ const handleSubmit = async (e: React.FormEvent) => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" ref={ref}>
+    <section id="contact" className="py-16 sm:py-24 relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-background to-navy-deep/50" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <span className="text-gold uppercase tracking-[0.3em] text-sm font-medium">
+          <span className="text-gold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm font-medium">
             Contact Us
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:mt-4 mb-4 sm:mb-6">
             Request a <span className="gold-text">Confidential</span> Consultation
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
             Your inquiry is protected by strict confidentiality protocols. 
             We understand the sensitive nature of your needs.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

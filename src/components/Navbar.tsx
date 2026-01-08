@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-transparent.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,8 +41,8 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <motion.a
               href="#"
@@ -52,7 +52,7 @@ const Navbar = () => {
               <img 
                 src={logo} 
                 alt="True Detective - Private Investigations" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain"
               />
             </motion.a>
 
@@ -110,7 +110,7 @@ const Navbar = () => {
           initial={false}
           animate={{ x: isMobileMenuOpen ? 0 : "100%" }}
           transition={{ duration: 0.3 }}
-          className="absolute right-0 top-20 bottom-0 w-full max-w-sm glass-card border-l border-gold/10 p-8"
+          className="absolute right-0 top-16 sm:top-20 bottom-0 w-full max-w-sm glass-card border-l border-gold/10 p-6 sm:p-8"
         >
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
