@@ -47,16 +47,13 @@ const Navbar = () => {
             <motion.a
               href="#"
               whileHover={{ scale: 1.02 }}
-              className="flex items-center gap-2 sm:gap-3"
+              className="flex items-center"
             >
               <img 
                 src={detectiveIcon} 
-                alt="True Detective" 
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                alt="True Detective - Private Investigations" 
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-w-[180px] sm:max-w-[220px] md:max-w-[260px]"
               />
-              <span className="font-display text-base sm:text-lg md:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-foreground">
-                <span className="text-gold">True</span> Detective
-              </span>
             </motion.a>
 
             {/* Desktop Nav */}
