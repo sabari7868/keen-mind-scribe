@@ -6,35 +6,40 @@ import heroImage from "@/assets/hero-detective.jpg";
 
 const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const [displayedText, setDisplayedText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (currentIndex < text.length) {
-        const interval = setInterval(() => {
-          setDisplayedText((prev) => prev + text[currentIndex]);
-          setCurrentIndex((prev) => prev + 1);
-        }, 80);
-        return () => clearInterval(interval);
-      }
+    // Initial delay before starting
+    const startTimeout = setTimeout(() => {
+      setHasStarted(true);
     }, delay);
-    return () => clearTimeout(timeout);
-  }, [currentIndex, text, delay]);
+
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
 
   useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
+    if (!hasStarted || isComplete) return;
+
+    let currentIndex = 0;
+    
+    const interval = setInterval(() => {
+      if (currentIndex < text.length) {
         setDisplayedText(text.slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }, 80);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, text]);
+        currentIndex++;
+      } else {
+        setIsComplete(true);
+        clearInterval(interval);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [hasStarted, text, isComplete]);
 
   return (
-    <span>
+    <span className="inline">
       {displayedText}
-      <span className="animate-pulse text-gold">|</span>
+      {!isComplete && <span className="animate-pulse text-gold">|</span>}
     </span>
   );
 };
