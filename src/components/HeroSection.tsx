@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield, Eye, Lock } from "lucide-react";
-import heroImage from "@/assets/logonew.png";
+import heroImage from "@/assets/hero-detective.jpg";
 
 const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const [displayedText, setDisplayedText] = useState("");
