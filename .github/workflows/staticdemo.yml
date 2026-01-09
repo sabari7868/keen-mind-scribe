@@ -2,41 +2,36 @@ name: Deploy Vite React app to GitHub Pages
 
 on:
   push:
-    branches: ["main"]        # Trigger on push to main branch
-  workflow_dispatch:          # Allows manual trigger from Actions tab
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
-  contents: write             # Required to allow deploy to gh-pages
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repository
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Build the app
-      - name: Build Vite app
-        run: npm run build
+      - name: Build Vite app with base path
+        run: npm run build -- --base /keen-mind-scribe/
 
-      # 5️⃣ Deploy to gh-pages branch
-      - name: Deploy to GitHub Pages
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages            # Branch to deploy to
-          folder: dist                # Build output folder
+          branch: gh-pages
+          folder: dist
           token: ${{ secrets.GITHUB_TOKEN }}
-          clean: true                 # Remove old files from gh-pages
-          force: true                 # Force push if needed
+          clean: true
+          force: true
