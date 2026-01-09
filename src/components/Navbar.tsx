@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import detectiveIcon from "@/assets/detective-gold.png";
+import logo from "@/assets/logo-transparent.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,13 +47,16 @@ const Navbar = () => {
             <motion.a
               href="#"
               whileHover={{ scale: 1.02 }}
-              className="flex items-center"
+              className="flex items-center gap-2 sm:gap-3"
             >
               <img 
-                src={detectiveIcon} 
+                src={logo} 
                 alt="True Detective - Private Investigations" 
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-w-[180px] sm:max-w-[220px] md:max-w-[260px]"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain"
               />
+              <span className="font-display text-base sm:text-lg md:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase gold-text">
+                True Detective
+              </span>
             </motion.a>
 
             {/* Desktop Nav */}
