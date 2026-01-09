@@ -13,24 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      # 1️⃣ Checkout repository
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # 2️⃣ Setup Node.js
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      # 3️⃣ Install dependencies
+      - run: npm install
 
-      - name: Build Vite app with base path
-        run: npm run build -- --base /keen-mind-scribe/
+      # 4️⃣ Build Vite app for /keen-mind-scribe/
+      - run: npm run build -- --base /keen-mind-scribe/
 
-      - name: Copy index.html to 404.html
-        run: cp dist/index.html dist/404.html
+      # 5️⃣ Add 404.html for SPA routing
+      - run: cp dist/index.html dist/404.html
 
-      - name: Deploy to gh-pages
+      # 6️⃣ Deploy only the dist folder
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
