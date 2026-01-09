@@ -1,4 +1,4 @@
-name: Deploy Vite React app to GitHub Pages
+name: Deploy Vite React SPA to GitHub Pages
 
 on:
   push:
@@ -26,6 +26,9 @@ jobs:
 
       - name: Build Vite app with base path
         run: npm run build -- --base /keen-mind-scribe/
+
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
