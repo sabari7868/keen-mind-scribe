@@ -11,7 +11,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -24,13 +23,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Vite app
+      - name: Build Vite app with correct base
         run: npm run build -- --base /keen-mind-scribe/
 
-      - name: Copy index.html to 404.html for SPA
+      - name: Add SPA fallback
         run: cp dist/index.html dist/404.html
 
-      - name: Deploy to gh-pages
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
