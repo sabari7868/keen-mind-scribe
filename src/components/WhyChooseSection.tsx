@@ -39,10 +39,10 @@ const WhyChooseSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { value: 25, suffix: "+", label: "Years of Excellence" },
-    { value: 5000, suffix: "+", label: "Cases Solved" },
-    { value: 98, suffix: "%", label: "Success Rate" },
-    { value: 50, suffix: "+", label: "Expert Investigators" },
+    { value: 10, suffix: "+", label: "Years of Excellence" },
+    { value: 668, suffix: "+", label: "Cases Solved" },
+    { value: 94, suffix: "%", label: "Success Rate" },
+    { value: 10, suffix: "+", label: "Expert Investigators" },
   ];
 
   const reasons = [
