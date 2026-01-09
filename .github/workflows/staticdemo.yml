@@ -1,4 +1,4 @@
-name: Deploy Vite app to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -21,12 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Vite app
+      - name: Build app
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v6
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages       # Branch to deploy to
-          folder: dist           # Folder to deploy
-          clean: true            # Remove old files
+          branch: gh-pages
+          folder: dist
